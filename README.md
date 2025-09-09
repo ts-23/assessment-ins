@@ -26,6 +26,10 @@ pnpm start
 - ported both the express app and react app into /apps
   - fixed some dependencies
 
+# Commits timeline
+
+- you can see my assessment journey with each commit here https://github.com/ts-23/assessment-ins/commits/main/
+
 # What I would do to make it better (or propose in a team, providing the evidence and logic)
 
 - convert to typescript
