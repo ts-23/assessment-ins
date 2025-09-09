@@ -17,7 +17,7 @@ pnpm start
 
 # Preface
 
-- was asked by Maxim to only spend 2-3 hours. Given this, I used a high impact, low effort approach (priority matrix)
+- was asked to only spend 2-3 hours. Given this, I used a high impact, low effort approach (priority matrix)
 - lots of things to improve beyond the scope of 3 hours (will list some below)
 - this is a monorepo bootstrapped by turborepo https://turborepo.com/
 
