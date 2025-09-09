@@ -1,7 +1,5 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-// import App from "./App.tsx";
-// import React from "react";
 import app from "ampersand-app";
 // import {
 //   Router,
@@ -30,27 +28,8 @@ import ErrorPage from "./views/pages/ErrorPage";
 
 import "./style.scss";
 
-// createRoot(document.getElementById("root")!).render(
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    {/* <App /> */}
-    {/* <Router history={browserHistory}>
-      <Route path="/" component={Main}>
-        <IndexRoute components={{ mainContent: Txt_page }} />
-
-        <Route path="/pg/(:page)" components={{ mainContent: Txt_page }} />
-
-        <Route path="/ttt" components={{ mainContent: Ttt }} />
-
-        <Route path="/pupg/(:pu_page)" components={{ popup: PopUp_page }} />
-
-        <Route path="/contact-us" components={{ popup: Contact }} />
-
-        <Route path="/error/404" components={{ mainContent: ErrorPage }} />
-        <Route path="*" components={{ mainContent: ErrorPage }} />
-      </Route>
-    </Router> */}
-
     <BrowserRouter>
       <Routes>
         <Route index element={<Txt_page />} />
