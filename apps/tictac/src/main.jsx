@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 // import App from "./App.tsx";
 // import React from "react";
-// import app from "ampersand-app";
+import app from "ampersand-app";
 // import {
 //   Router,
 //   Route,
@@ -12,9 +12,9 @@ import { createRoot } from "react-dom/client";
 // } from "react-router";
 import { BrowserRouter, Routes, Route } from "react-router";
 
-// import { createHistory, useBasename } from "history";
-// import ga from "react-ga";
-// import prep_env from "./models/prep_env";
+import { createBrowserHistory } from "history";
+import ga from "react-ga";
+import prep_env from "./models/prep_env";
 
 import "./sass/main.scss";
 
@@ -82,118 +82,70 @@ createRoot(document.getElementById("root")).render(
   </StrictMode>
 );
 
-// import React from 'react'
-// import app from 'ampersand-app'
-// import { render } from 'react-dom'
-// import { Router, Route, Redirect, IndexRoute, browserHistory  } from 'react-router'
-// import { createHistory, useBasename } from 'history'
-// import ga from 'react-ga'
+// ----------------------------------------------------------------------
+// This section is used to configure the global app
+// ----------------------------------------------------------------------
 
-// import './sass/main.scss'
+window.app = app;
 
-// import Main from './views/Main'
+app.extend({
+  settings: {
+    is_mobile: false,
+    mobile_type: null,
+    can_app: false,
 
-// import Ttt from './views/ttt/Ttt'
+    ws_conf: null,
 
-// import Txt_page from './views/pages/Txt_page'
-// import PopUp_page from './views/pages/PopUp_page'
+    curr_user: null,
 
-// import Contact from './views/pages/Contact'
-// import ErrorPage from './views/pages/ErrorPage'
+    user_ready: false,
+    user_types: [],
+    basket_type: null,
+    basket_total: 0,
+  },
 
-// import prep_env from './models/prep_env'
+  init() {
+    prep_env(this.start.bind(this));
+  },
 
-// let renderSite = function () {
-// 	return render((
-// 		<Router history={browserHistory}>
-// 			<Route path='/' component={Main}>
+  start_ga() {
+    ga.initialize(app.settings.ws_conf.conf.ga_acc.an, { debug: true });
+    // ga.pageview(location.pathname)
+    const loclisten = browserHistory.listen((location) => {
+      // ga.send('send', location);
+      ga.pageview(location.pathname);
+    });
+  },
 
-// 				<IndexRoute components={{mainContent: Txt_page}} />
+  start() {
+    const history = createBrowserHistory({
+      basename: base_dir,
+    });
 
-// 				<Route path='/pg/(:page)' components={{mainContent: Txt_page}} />
+    this.start_ga();
 
-// 				<Route path='/ttt' components={{mainContent: Ttt}} />
+    renderSite();
+  },
 
-// 				<Route path='/pupg/(:pu_page)' components={{popup: PopUp_page}} />
+  show_page(u) {
+    switch (u) {
+      case "home":
+        browserHistory.push("/");
+        break;
 
-// 				<Route path='/contact-us' components={{popup: Contact}} />
+      default:
+        console.log("show_page event with:", u);
+        browserHistory.push(u);
+        break;
+    }
+  },
 
-// 				<Route path='/error/404' components={{mainContent: ErrorPage}} />
-// 				<Route path="*" components={{mainContent: ErrorPage}} />
-// 			</Route>
-// 		</Router>
-// 	), document.getElementById('root'))
-// }
+  events: {
+    show_message: "show_message",
+    show_page: "show_page",
+  },
+});
 
-// // ----------------------------------------------------------------------
-// // This section is used to configure the global app
-// // ----------------------------------------------------------------------
+app.init();
 
-// window.app = app
-
-// app.extend({
-
-// 	settings: {
-// 		is_mobile: false,
-// 		mobile_type: null,
-// 		can_app: false,
-
-// 		ws_conf: null,
-
-// 		curr_user: null,
-
-// 		user_ready: false,
-// 		user_types: [],
-// 		basket_type: null,
-// 		basket_total: 0,
-
-// 	},
-
-// 	init () {
-
-// 		prep_env(this.start.bind(this))
-
-// 	},
-
-// 	start_ga () {
-// 		ga.initialize(app.settings.ws_conf.conf.ga_acc.an, { debug: true });
-// 		// ga.pageview(location.pathname)
-// 		const loclisten = browserHistory.listen((location) => {
-// 			// ga.send('send', location);
-// 			ga.pageview(location.pathname)
-// 		})
-// 	},
-
-// 	start () {
-// 		const history = useBasename(createHistory)({
-// 			// basename: document.getElementsByTagName('base')[0] ? document.getElementsByTagName('base')[0].getAttribute('href') : ''
-// 			basename: base_dir
-// 		})
-
-// 		this.start_ga()
-
-// 		renderSite()
-// 	},
-
-// 	show_page (u) {
-// 		switch(u) {
-// 			case 'home':
-// 				browserHistory.push('/')
-// 				break
-
-// 			default:
-// 				console.log('show_page event with:', u)
-// 				browserHistory.push(u)
-// 				break
-// 		}
-// 	},
-
-// 	events: {
-// 		show_message: 'show_message',
-// 		show_page: 'show_page'
-// 	},
-// })
-
-// app.init()
-
-// app.on(app.events.show_page, app.show_page)
+app.on(app.events.show_page, app.show_page);
