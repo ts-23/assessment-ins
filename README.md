@@ -36,7 +36,7 @@ pnpm start
 
 # What I did alot
 
-please check out apps/tictac-fe-new-work-in-progress where most of my efforts went
+please check out apps/tictac-fe-new-work-in-progress where most of my efforts went https://github.com/ts-23/assessment-ins/tree/main/apps/tictac-fe-new-work-in-progress
 
 # What I would do to make it better (or propose in a team, providing the evidence and logic)
 
