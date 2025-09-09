@@ -50,7 +50,7 @@ please check out apps/tictac-fe-new-work-in-progress where most of my efforts we
   - update to React 19
   - either convert or rebuild the React components to use functional components. Class is now outdated
   - remove the use of ampersand-app and the app singleton attached to window. We can do this in more standard ways
-  - do a pass or file/folder structure and naming to align with modern practices, and team conventions
+  - do a pass on file/folder structure and naming to align with modern practices, and team conventions
   - more...
 - build out packages/ui to have reusable UI components like our own component library
   - would probably use headless components such as react-aria or equivalent
