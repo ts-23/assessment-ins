@@ -4,6 +4,10 @@
 - switch to node 16. can use nvm or equivalent
 
 ```sh
+nvm use 16
+```
+
+```sh
 pnpm i
 ```
 
