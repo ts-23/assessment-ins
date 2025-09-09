@@ -34,6 +34,10 @@ pnpm start
 
 - you can see my assessment journey with each commit here https://github.com/ts-23/assessment-ins/commits/main/
 
+# What I did alot
+
+please check out apps/tictac-fe-new-work-in-progress where most of my efforts went
+
 # What I would do to make it better (or propose in a team, providing the evidence and logic)
 
 - convert to typescript
