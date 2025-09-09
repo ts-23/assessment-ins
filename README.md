@@ -43,7 +43,7 @@ please check out apps/tictac-fe-new-work-in-progress where most of my efforts we
 - convert to typescript
 - complete tictac-fe-new-work-in-progress and delete the old react app
   - remove webpack and use vite, nextjs or equivalent
-  - remove a lot of packages that would become necessary once modernised
+  - remove a lot of packages that would become unnecessary once modernised
   - use tailwind for better productivity
   - do a pass with linting and prettier format with new suitable rules
   - remove prop-types
