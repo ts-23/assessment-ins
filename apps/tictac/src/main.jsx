@@ -3,13 +3,15 @@ import { createRoot } from "react-dom/client";
 // import App from "./App.tsx";
 // import React from "react";
 // import app from "ampersand-app";
-import {
-  Router,
-  Route,
-  Redirect,
-  IndexRoute,
-  browserHistory,
-} from "react-router";
+// import {
+//   Router,
+//   Route,
+//   Redirect,
+//   IndexRoute,
+//   browserHistory,
+// } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router";
+
 // import { createHistory, useBasename } from "history";
 // import ga from "react-ga";
 // import prep_env from "./models/prep_env";
@@ -26,14 +28,13 @@ import PopUp_page from "./views/pages/PopUp_page";
 import Contact from "./views/pages/Contact";
 import ErrorPage from "./views/pages/ErrorPage";
 
-//
 import "./style.scss";
 
 // createRoot(document.getElementById("root")!).render(
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     {/* <App /> */}
-    <Router history={browserHistory}>
+    {/* <Router history={browserHistory}>
       <Route path="/" component={Main}>
         <IndexRoute components={{ mainContent: Txt_page }} />
 
@@ -48,7 +49,36 @@ createRoot(document.getElementById("root")).render(
         <Route path="/error/404" components={{ mainContent: ErrorPage }} />
         <Route path="*" components={{ mainContent: ErrorPage }} />
       </Route>
-    </Router>
+    </Router> */}
+
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Txt_page />} />
+        {/* <Route path="/error/404" element={<ErrorPage />} /> */}
+        {/* 
+        <Route path="/pg/(:page)" element={{ mainContent: Txt_page }} />
+
+        <Route path="/ttt" element={{ mainContent: Ttt }} />
+
+        <Route path="/pupg/(:pu_page)" element={{ popup: PopUp_page }} />
+
+        <Route path="/contact-us" componeelementnts={{ popup: Contact }} />
+
+        <Route path="*" element={{ mainContent: ErrorPage }} /> */}
+        {/* <Route path="about" element={<About />} />
+
+        <Route element={<AuthLayout />}>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Route>
+
+        <Route path="concerts">
+          <Route index element={<ConcertsHome />} />
+          <Route path=":city" element={<City />} />
+          <Route path="trending" element={<Trending />} />
+        </Route> */}
+      </Routes>
+    </BrowserRouter>
   </StrictMode>
 );
 
