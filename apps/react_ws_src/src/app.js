@@ -43,7 +43,7 @@ let renderSite = function () {
         <Route path="*" components={{ mainContent: ErrorPage }} />
       </Route>
     </Router>,
-    document.getElementById("root")
+    document.getElementById("root"),
   );
 };
 

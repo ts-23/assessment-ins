@@ -31,7 +31,7 @@ const prep_env = function (ca) {
       // console.log('loaded site configuration', app.settings.ws_conf)
       console.log(
         "loaded site configuration",
-        app.settings.ws_conf.site.vals.year
+        app.settings.ws_conf.site.vals.year,
       );
 
       prep_site();
@@ -49,7 +49,7 @@ const prep_env = function (ca) {
       // IE only
       try {
         app.settings.hasFlash = !!new ActiveXObject(
-          "ShockwaveFlash.ShockwaveFlash"
+          "ShockwaveFlash.ShockwaveFlash",
         );
       } catch (e) {}
     } else {
@@ -72,7 +72,7 @@ const prep_env = function (ca) {
       navigator.userAgent.match(/Android/i) ||
       navigator.userAgent.match(/iPad|iPhone|iPod/i) ||
       navigator.userAgent.match(
-        /webOS|BlackBerry|Windows Phone|Opera Mini|IEMobile|windows mobile/i
+        /webOS|BlackBerry|Windows Phone|Opera Mini|IEMobile|windows mobile/i,
       )
     );
 
